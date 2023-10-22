@@ -1,13 +1,25 @@
+'use client'
+
 import Container from './UI/Container'
 import Button from './UI/Button'
 import Logo from '../../public/trim-logo.png'
 import { navItemsSr } from '../data/nav'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { useFontsContext } from '../store/fonts-ctx'
 
-const Nav = ({ gabarito }) => {
+const Nav = ({ gabarito, akira }) => {
+  const { updateGabaritoFont, updateAkiraFont, gabaritoFont } =
+    useFontsContext()
+
+  useEffect(() => {
+    updateAkiraFont(akira)
+    updateGabaritoFont(gabarito)
+  }, [gabarito, akira])
+
   return (
-    <header className={`bg-white py-5 ${gabarito.className}`}>
+    <header className={`bg-white py-5 ${gabaritoFont?.className}`}>
       <Container>
         <div className="flex justify-between items-center">
           <div className="w-[8rem]">

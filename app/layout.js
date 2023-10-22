@@ -3,6 +3,7 @@ import './globals.css'
 import Nav from './components/Header'
 import { ContainerContextProvider } from './store/container-ctx'
 import localFont from '@next/font/local'
+import { FontsContextProvider } from './store/fonts-ctx'
 
 const gabarito = Gabarito({ subsets: ['latin'] })
 const akira = localFont({
@@ -23,10 +24,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${akira.className}`}>
+      <body
+        className={`${akira.className} ${gabarito.className} overflow-x-hidden`}
+      >
         <ContainerContextProvider>
-          <Nav gabarito={gabarito} />
-          <main>{children}</main>
+          <FontsContextProvider>
+            <Nav gabarito={gabarito} akira={akira} />
+            <main>{children}</main>
+          </FontsContextProvider>
         </ContainerContextProvider>
       </body>
     </html>
