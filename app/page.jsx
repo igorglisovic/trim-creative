@@ -7,16 +7,32 @@ import Trim from '../public/aa.png'
 import Trim2 from '../public/bmwm4.jpg'
 import Button from './components/UI/Button'
 import { useFontsContext } from './store/fonts-ctx'
-import { useScroll, useTransform, motion } from 'framer-motion'
-import { useEffect } from 'react'
+import {
+  useScroll,
+  useTransform,
+  motion,
+  useMotionValueEvent,
+} from 'framer-motion'
+import { useEffect, useState } from 'react'
 import Lenis from '@studio-freight/lenis'
+import { useAnimationContext } from './store/animation-ctx'
 
 const page = () => {
+  const [hookedYPostion, setHookedYPosition] = useState(0)
+
   const { containerWidth } = useContainerContext()
   const { gabaritoFont } = useFontsContext()
+  const { animationFinished, updateAnimationFinished } = useAnimationContext()
 
   const { scrollYProgress } = useScroll()
-  const y = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -hookedYPostion])
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -hookedYPostion - 20])
+
+  useMotionValueEvent(scrollYProgress, 'change', () => {
+    if (animationFinished) {
+      setHookedYPosition(80)
+    }
+  })
 
   useEffect(() => {
     const lenis = new Lenis()
@@ -29,8 +45,12 @@ const page = () => {
     requestAnimationFrame(raf)
   }, [])
 
+  useEffect(() => {
+    updateAnimationFinished(false)
+  }, [])
+
   return (
-    <div>
+    <div className="bg-white">
       <Container>
         <div className="flex flex-col gap-6 py-10">
           <section>
@@ -55,7 +75,7 @@ const page = () => {
             >
               {/* Circles */}
               <motion.div
-                style={{ y }}
+                style={{ y: y1 }}
                 className="bg-circle-gradient w-[130px] h-[130px] rounded-full absolute left-[47%] top-[40%] z-20 rotate-[99.13deg]"
               ></motion.div>
               <motion.div
@@ -63,7 +83,7 @@ const page = () => {
                 className="bg-circle-gradient w-[70px] h-[70px] rounded-full absolute right-[5%] top-[-55px] z-20 rotate-[-2.4deg]"
               ></motion.div>
               <motion.div
-                style={{ y }}
+                style={{ y: y1 }}
                 className="bg-circle-gradient w-[170px] h-[170px] lg:w-[300px] lg:h-[300px] rounded-full absolute left-[-150px] top-[-95px] z-50 rotate-[43.97deg]"
               ></motion.div>
 
@@ -98,6 +118,7 @@ const page = () => {
             <div className="flex relative pb-[20.55%] overflow-hidden w-full shadow-md rounded-[38px]">
               <Image
                 src={Trim}
+                alt=""
                 className="absolute top-0 left-0 w-full h-full object-cover z-30"
               />
             </div>
@@ -114,14 +135,11 @@ const page = () => {
             <path
               d="M48.0607 13.0607C48.6464 12.4749 48.6464 11.5251 48.0607 10.9393L38.5147 1.3934C37.9289 0.807611 36.9792 0.807611 36.3934 1.3934C35.8076 1.97919 35.8076 2.92893 36.3934 3.51472L44.8787 12L36.3934 20.4853C35.8076 21.0711 35.8076 22.0208 36.3934 22.6066C36.9792 23.1924 37.9289 23.1924 38.5147 22.6066L48.0607 13.0607ZM0 13.5H47V10.5H0V13.5Z"
               fill="white"
-              fill-opacity="0.48"
+              fillOpacity="0.48"
             />
           </svg>
 
           <h2>Maximizing Your Online Impact</h2>
-          <div className="flex">
-            <Image />
-          </div>
         </section>
       </Container>
     </div>

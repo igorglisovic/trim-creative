@@ -1,5 +1,6 @@
 'use client'
 
+import { useAnimationContext } from '@/app/store/animation-ctx'
 import { useContainerContext } from '@/app/store/container-ctx'
 import { useEffect, useRef } from 'react'
 
@@ -7,8 +8,10 @@ const Container = ({ children }) => {
   const ref = useRef()
 
   const { updateContainerWidth, containerWidth } = useContainerContext()
+  const { animationFinished } = useAnimationContext()
 
   useEffect(() => {
+    // if (animationFinished) {
     if (!containerWidth) {
       updateContainerWidth(ref.current.getBoundingClientRect().width - 96)
     }
@@ -18,11 +21,11 @@ const Container = ({ children }) => {
     }
 
     window.addEventListener('resize', calcWidth)
-
     return () => {
       window.removeEventListener('resize', calcWidth)
     }
-  }, [])
+    // }
+  }, [animationFinished])
 
   return (
     <div ref={ref} className="max-w-[1700px] m-auto px-12 ">

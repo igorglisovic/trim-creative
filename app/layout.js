@@ -4,6 +4,8 @@ import Nav from './components/Header'
 import { ContainerContextProvider } from './store/container-ctx'
 import localFont from '@next/font/local'
 import { FontsContextProvider } from './store/fonts-ctx'
+import { motion, AnimatePresence } from 'framer-motion'
+import { AnimationContextProvider } from './store/animation-ctx'
 
 const gabarito = Gabarito({ subsets: ['latin'] })
 const akira = localFont({
@@ -29,8 +31,10 @@ export default function RootLayout({ children }) {
       >
         <ContainerContextProvider>
           <FontsContextProvider>
-            <Nav gabarito={gabarito} akira={akira} />
-            <main>{children}</main>
+            <AnimationContextProvider>
+              <Nav gabarito={gabarito} akira={akira} />
+              <main>{children}</main>
+            </AnimationContextProvider>
           </FontsContextProvider>
         </ContainerContextProvider>
       </body>

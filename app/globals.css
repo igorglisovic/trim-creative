@@ -15,3 +15,29 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+.test {
+  position: absolute;
+  will-change: clip-path;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  /* position: fixed; */
+  height: 100vh;
+  clip-path: circle(10.184% at 1724px 64px);
+  visibility: visible;
+  z-index: 50000;
+  /* background-color: red; */
+  padding-top: 95px;
+}
+
+.nav {
+  transform: translateX(-50%) translateY(-50%);
+  left: 50%;
+  top: 50%;
+}
+
+.position-center {
+  transform: translateY(-50%);
+  top: 50%;
+}
