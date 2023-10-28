@@ -23,12 +23,12 @@
   left: 0px;
   top: 0px;
   /* position: fixed; */
+  overflow: hidden;
   height: 100vh;
-  clip-path: circle(10.184% at 1724px 64px);
   visibility: visible;
   z-index: 50000;
-  /* background-color: red; */
   padding-top: 95px;
+  /* background: red; */
 }
 
 .nav {

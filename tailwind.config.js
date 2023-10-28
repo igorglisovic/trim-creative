@@ -13,6 +13,8 @@ module.exports = {
       },
       colors: {
         'light-black': '#231F20',
+        'dark-gray': '#231F20',
+        'card-black': '#181415',
       },
     },
   },

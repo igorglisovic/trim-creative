@@ -27,11 +27,13 @@ const Nav = ({ gabarito, akira }) => {
   }, [gabarito, akira])
 
   const handleClick = (e, navItem) => {
-    const targetPosition = e.target.getBoundingClientRect()
-    console.log(targetPosition)
+    // if (!animationFinished) {
+    //   e.preventDefault()
+    //   return
+    // }
 
-    updateAnimationPosition({ x: targetPosition.x, y: targetPosition.y })
-    updateBackgroundColor(navItem.color)
+    updateAnimationPosition({ x: e.clientX, y: e.clientY })
+    updateBackgroundColor(true)
   }
 
   return (
@@ -55,7 +57,9 @@ const Nav = ({ gabarito, akira }) => {
                 <li key={navItem.title} className="uppercase text-light-black">
                   <Link
                     onClick={e => handleClick(e, navItem)}
-                    className="font-medium text-sm lg:text-base"
+                    className={`font-medium text-sm lg:text-base ${
+                      !animationFinished ? 'cursor-default' : 'cursor-pointer'
+                    } `}
                     href={navItem.path}
                   >
                     {navItem.title}

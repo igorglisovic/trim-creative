@@ -4,8 +4,10 @@ import Nav from './components/Header'
 import { ContainerContextProvider } from './store/container-ctx'
 import localFont from '@next/font/local'
 import { FontsContextProvider } from './store/fonts-ctx'
-import { motion, AnimatePresence } from 'framer-motion'
 import { AnimationContextProvider } from './store/animation-ctx'
+import { RouterContextProvider } from './store/router-ctx'
+import TestPage from './test/page.jsx'
+import PageTransitionBackground from './components/PageTransitionBackground'
 
 const gabarito = Gabarito({ subsets: ['latin'] })
 const akira = localFont({
@@ -26,14 +28,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${akira.className} ${gabarito.className} overflow-x-hidden`}
-      >
+      <body className={`${akira.className} overflow-x-hidden`}>
         <ContainerContextProvider>
           <FontsContextProvider>
             <AnimationContextProvider>
-              <Nav gabarito={gabarito} akira={akira} />
-              <main>{children}</main>
+              <RouterContextProvider>
+                <Nav gabarito={gabarito} akira={akira} />
+                <main>{children}</main>
+                {/* <PageTransitionBackground /> */}
+              </RouterContextProvider>
             </AnimationContextProvider>
           </FontsContextProvider>
         </ContainerContextProvider>
