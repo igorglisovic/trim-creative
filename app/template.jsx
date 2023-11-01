@@ -1,10 +1,8 @@
 'use client'
 
-import { easeIn, easeInOut, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useAnimationContext } from './store/animation-ctx'
 import { useEffect, useState } from 'react'
-import HomePage from './page.jsx'
-import TestPage from './test/page.jsx'
 import { useRouterContext } from './store/router-ctx'
 import Lenis from '@studio-freight/lenis'
 
@@ -13,6 +11,7 @@ const Template = ({ children }) => {
     animationPosition,
     updateAnimationFinished,
     animationFinished,
+    animationStarted,
     updateAnimationStarted,
     updateBackgroundColor,
   } = useAnimationContext()
@@ -24,6 +23,7 @@ const Template = ({ children }) => {
   // Smooth scroll
   useEffect(() => {
     const lenis = new Lenis()
+    // lenis.isStopped = true
 
     function raf(time) {
       lenis.raf(time)
@@ -31,30 +31,27 @@ const Template = ({ children }) => {
     }
 
     requestAnimationFrame(raf)
-  }, [])
+
+    if (animationFinished) {
+      // lenis.isStopped = false
+    } else {
+      // lenis.isStopped = true
+    }
+    console.log(animationFinished)
+  }, [animationFinished])
 
   const variants2 = {
     hidden: {
-      // display: 'hidden',
-      // opacity: 1,
       left: 0,
       top: 0,
     },
     enter: {
-      // display: 'initial',
-      // opacity: 0,
       left: '-200px',
     },
     toDown: {
-      // display: 'initial',
-      // opacity: 0,
       top: '200px',
     },
   }
-
-  useEffect(() => {
-    console.log(pathHistory)
-  }, [pathHistory])
 
   useEffect(() => {
     const screenWidth = window.innerWidth
@@ -71,6 +68,9 @@ const Template = ({ children }) => {
           clipPath: `circle(${
             screenWidth > screenHeight ? screenWidth : screenHeight
           }px at ${screenWidth / 2}px ${screenHeight / 2}px)`,
+          transitionEnd: {
+            clipPath: 'none',
+          },
         },
       }
     }
@@ -78,9 +78,10 @@ const Template = ({ children }) => {
     if (animationPosition?.x && animationPosition?.y) {
       variantsObj = {
         hidden: {
-          clipPath: `circle(0px at ${
-            animationPosition?.x || screenWidth / 2
-          }px ${animationPosition?.y || screenHeight / 2}px)`,
+          clipPath: `circle(0px at ${animationPosition.x}px ${animationPosition.y}px)`,
+          transitionEnd: {
+            // clipPath: 'none',
+          },
         },
         enter: {
           clipPath: `circle(${
@@ -88,12 +89,12 @@ const Template = ({ children }) => {
               ? screenWidth + animationPosition.x
               : screenWidth + animationPosition.x
           }px at ${animationPosition?.x}px ${animationPosition?.y}px)`,
+          transitionEnd: {
+            clipPath: 'none',
+          },
         },
       }
     }
-    console.log(screenHeight, animationPosition?.y)
-    console.log(screenWidth, animationPosition?.x)
-
     setVariants(variantsObj)
   }, [])
 
@@ -105,7 +106,7 @@ const Template = ({ children }) => {
           initial={'hidden'}
           animate={'enter'}
           transition={{
-            duration: 1,
+            // duration: 12,
             type: 'spring',
             stiffness: 120,
             damping: 180,

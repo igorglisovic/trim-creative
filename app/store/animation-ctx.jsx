@@ -28,9 +28,9 @@ export const AnimationContextProvider = ({ children }) => {
     setBackgroundColor(value)
   }
 
-  useEffect(() => {
-    console.log(animationFinished)
-  }, [animationFinished])
+  // useEffect(() => {
+  //   console.log(animationFinished)
+  // }, [animationFinished])
 
   return (
     <AnimationContext.Provider

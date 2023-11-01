@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         'main-gradient': 'linear-gradient(90deg, #9B81BB 0%, #5D4EA0 100%)',
         'circle-gradient': 'linear-gradient(180deg, #9B81BB 0%, #5D4EA0 100%)',
+        'footer-gradient': 'linear-gradient(180deg, #9B81BB 0%, #5D4EA0 100%)',
       },
       colors: {
         'light-black': '#231F20',

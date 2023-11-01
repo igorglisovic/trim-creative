@@ -23,7 +23,7 @@
   left: 0px;
   top: 0px;
   /* position: fixed; */
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100vh;
   visibility: visible;
   z-index: 50000;
@@ -40,4 +40,16 @@
 .position-center {
   transform: translateY(-50%);
   top: 50%;
+}
+
+.input {
+  @apply bg-transparent border-b-[1px] py-4 px-3 text-white;
+}
+
+.input:focus {
+  @apply border-[1px] outline-none rounded-[10px];
+}
+
+.input::placeholder {
+  color: #e4e4e4;
 }

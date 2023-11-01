@@ -14,12 +14,8 @@ const Nav = ({ gabarito, akira }) => {
   const { updateGabaritoFont, updateAkiraFont, gabaritoFont } =
     useFontsContext()
 
-  const {
-    updateAnimationPosition,
-    updateBackgroundColor,
-    backgroundColor,
-    animationFinished,
-  } = useAnimationContext()
+  const { updateAnimationPosition, updateBackgroundColor, animationFinished } =
+    useAnimationContext()
 
   useEffect(() => {
     updateAkiraFont(akira)
@@ -37,13 +33,10 @@ const Nav = ({ gabarito, akira }) => {
   }
 
   return (
-    <header
-      className={`${gabaritoFont?.className}`}
-      // style={{ backgroundColor: animationFinished && backgroundColor }}
-    >
+    <header className={`${gabaritoFont?.className}`}>
       <Container>
-        <div className="relative min-h-[95px]">
-          <div className="w-[8rem] absolute left-0 position-center z-[999999999999999999]">
+        <div className="relative min-h-[95px] whitespace-nowrap">
+          <div className="md:w-[8rem] w-[6.3rem] absolute left-0 position-center z-[999999999999999999]">
             <Image
               priority={true}
               alt="Trim Creative logo"
@@ -51,8 +44,8 @@ const Nav = ({ gabarito, akira }) => {
               src={Logo}
             />
           </div>
-          <nav className="flex items-center absolute nav z-[999999999999999999]">
-            <ul className="flex gap-5">
+          <nav className="hidden sm:flex items-center absolute nav z-[999999999999999999] ">
+            <ul className="flex md:gap-5 gap-3">
               {navItemsSr?.map(navItem => (
                 <li key={navItem.title} className="uppercase text-light-black">
                   <Link
@@ -68,7 +61,7 @@ const Nav = ({ gabarito, akira }) => {
               ))}
             </ul>
           </nav>
-          <Button className="absolute right-0 position-center z-[999999999999999999]">
+          <Button className="absolute right-0 position-center z-[999999999999999999] hidden sm:flex">
             Pozovi
           </Button>
         </div>
