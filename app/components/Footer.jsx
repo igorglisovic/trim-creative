@@ -7,14 +7,7 @@ import Logo from '../../public/trim-logo.png'
 import { navItemsSr } from '../data/nav'
 import Image from 'next/image'
 import Link from 'next/link'
-import {
-  AlternateEmailOutlined,
-  AttachEmailOutlined,
-  Email,
-  EmailOutlined,
-  Instagram,
-  MarkEmailUnread,
-} from '@mui/icons-material'
+import { EmailOutlined, Instagram } from '@mui/icons-material'
 
 const Footer = () => {
   const { gabaritoFont, akiraFont } = useFontsContext()
@@ -29,13 +22,13 @@ const Footer = () => {
             Spremni za rast?
           </h2>
           <p
-            className={`md:text-lg text-gray-300 text-center ${gabaritoFont.className}`}
+            className={`md:text-lg text-gray-300 text-center ${gabaritoFont?.className}`}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
             libero a dolor feugiat iaculis.
           </p>
           <form
-            className={`${gabaritoFont.className} flex flex-col gap-6 w-full xl:px-20 md:px-10`}
+            className={`${gabaritoFont?.className} flex flex-col gap-6 w-full xl:px-20 md:px-10`}
           >
             <input className="input" type="text" placeholder="E-mail" />
             <input className="input" type="text" placeholder="Ime" />
@@ -54,7 +47,7 @@ const Footer = () => {
           </form>
         </div>
         <div
-          className={`flex flex-col md:flex-row items-center justify-between gap-7 mt-4 md:mt-16 ${gabaritoFont.className}`}
+          className={`flex flex-col md:flex-row items-center justify-between gap-7 mt-4 md:mt-16 ${gabaritoFont?.className}`}
         >
           <div className="w-[8rem]">
             <Image

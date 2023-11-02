@@ -13,6 +13,7 @@ import { useContainerContext } from '@/app/store/container-ctx'
 import { useFontsContext } from '@/app/store/fonts-ctx'
 import { useAnimationContext } from '@/app/store/animation-ctx'
 import Container from '../UI/Container'
+import H1 from '../UI/H1'
 
 const HeroSection = () => {
   const [hookedYPostion, setHookedYPosition] = useState(0)
@@ -33,7 +34,7 @@ const HeroSection = () => {
 
   return (
     <Container>
-      <div className="flex flex-col gap-6 pt-8 pb-20">
+      <div className="flex flex-col gap-6 pt-6 pb-20">
         <section>
           <div className="w-full relative">
             {/* Circles */}
@@ -41,16 +42,9 @@ const HeroSection = () => {
               style={{ y }}
               className="bg-circle-gradient w-[200px] h-[200px] rounded-full absolute right-[-130px] top-[-60px] z-20 rotate-[-176.47deg]"
             ></motion.div>
-            <h1
-              className={`${akiraFont?.className} uppercase text-center whitespace-nowrap leading-none`}
-              style={{
-                fontSize: containerWidth
-                  ? `${containerWidth / 11.6}px`
-                  : '235px',
-              }}
-            >
+            <H1>
               Odsecite vasu <br /> konkurenciju
-            </h1>
+            </H1>
           </div>
           <div
             className={`${gabaritoFont?.className} flex flex-col md:flex-row md:text-left text-center lg:gap-10 gap-8 mt-14 relative`}

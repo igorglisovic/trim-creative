@@ -6,7 +6,7 @@ export const navItemsSr = [
   },
   {
     title: 'Usluge',
-    path: '/',
+    path: '/usluge',
     color: 'white',
   },
   {

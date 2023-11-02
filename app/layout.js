@@ -6,8 +6,12 @@ import localFont from 'next/font/local'
 import { FontsContextProvider } from './store/fonts-ctx'
 import { AnimationContextProvider } from './store/animation-ctx'
 import { RouterContextProvider } from './store/router-ctx'
+import Footer from './components/Footer'
 
-const gabarito = Gabarito({ subsets: ['latin'], weight: ['400', '500', '600'] })
+const gabarito = Gabarito({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+})
 const akira = localFont({
   src: [
     {
@@ -33,6 +37,7 @@ export default function RootLayout({ children }) {
               <RouterContextProvider>
                 <Header gabarito={gabarito} akira={akira} />
                 <main>{children}</main>
+                <Footer />
               </RouterContextProvider>
             </AnimationContextProvider>
           </FontsContextProvider>

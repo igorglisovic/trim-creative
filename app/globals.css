@@ -53,3 +53,12 @@
 .input::placeholder {
   color: #e4e4e4;
 }
+
+.three-line-ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  line-height: 1.7;
+}
