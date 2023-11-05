@@ -33,7 +33,7 @@ const UslugeCard = ({ card, cards, setCards, index }) => {
       cards.map((card, i) => {
         if (card.active && i !== index) return { ...card, active: false }
         if (i === index && !card.active) return { ...card, active: true }
-        if (i === index && card.active) return { ...card, active: card.active }
+        if (i === index && card.active) return { ...card, active: !card.active }
         else return card
       })
     )
@@ -61,9 +61,21 @@ const UslugeCard = ({ card, cards, setCards, index }) => {
               className="px-[0.9em] border-0 float-right flex rounded-full bg-arrow"
               onClick={handleClick}
             >
-              <East
-                sx={{ color: 'rgba(255, 255, 255, 0.48)', fontSize: '1.9rem' }}
-              />
+              {!card.active ? (
+                <East
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.48)',
+                    fontSize: '1.9rem',
+                  }}
+                />
+              ) : (
+                <West
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.48)',
+                    fontSize: '1.9rem',
+                  }}
+                />
+              )}
             </button>
           </motion.div>
           <motion.div
@@ -99,9 +111,21 @@ const UslugeCard = ({ card, cards, setCards, index }) => {
               onClick={handleClick}
               className="px-[0.9em] border-0 self-start flex rounded-full bg-arrow"
             >
-              <West
-                sx={{ color: 'rgba(255, 255, 255, 0.48)', fontSize: '1.9rem' }}
-              />
+              {card.active ? (
+                <East
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.48)',
+                    fontSize: '1.9rem',
+                  }}
+                />
+              ) : (
+                <West
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.48)',
+                    fontSize: '1.9rem',
+                  }}
+                />
+              )}
             </button>
           </motion.div>
           <motion.div

@@ -113,7 +113,7 @@ const CardsSection = () => {
           ></motion.div>
 
           <h2
-            className={`${akiraFont?.className} text-white sm:text-4xl text-3xl`}
+            className={`${akiraFont?.className} text-white sm:text-4xl text-3xl text-center sm:text-left`}
           >
             Maximizing Your Online Impact
           </h2>

@@ -6,11 +6,15 @@ import Logo from '../../public/trim-logo.png'
 import { navItemsSr } from '../data/nav'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useFontsContext } from '../store/fonts-ctx'
 import { useAnimationContext } from '../store/animation-ctx'
+import { motion } from 'framer-motion'
 
 const Nav = ({ gabarito, akira }) => {
+  const [expand, setExpand] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
   const { updateGabaritoFont, updateAkiraFont, gabaritoFont } =
     useFontsContext()
 
@@ -44,7 +48,8 @@ const Nav = ({ gabarito, akira }) => {
               src={Logo}
             />
           </div>
-          <nav className="hidden sm:flex items-center absolute nav z-[999999999999999999] ">
+          {/* Desktop Menu */}
+          <nav className="hidden invisible sm:visible sm:flex items-center absolute nav z-[999999999999999999] ">
             <ul className="flex md:gap-5 gap-3">
               {navItemsSr?.map(navItem => (
                 <li key={navItem.title} className="uppercase text-light-black">
@@ -61,7 +66,58 @@ const Nav = ({ gabarito, akira }) => {
               ))}
             </ul>
           </nav>
-          <Button className="absolute right-0 position-center z-[999999999999999999] hidden sm:flex">
+          {/* Mobile Menu */}
+          <motion.button
+            onClick={() => {
+              setIsOpen(!isOpen)
+            }}
+            className={'button-two absolute right-0 w-14 h-14'}
+            aria-expanded="false"
+            aria-label="hamburger"
+          >
+            <svg
+              stroke={'red'}
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+              width="250"
+              className="w-full"
+            >
+              <line
+                className={`line top`}
+                x1="10"
+                x2="90"
+                y1="40"
+                y2="40"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="80"
+                strokeDashoffset="0"
+              ></line>
+              <line
+                className={`line bottom`}
+                x1="90"
+                x2="10"
+                y1="60"
+                y2="60"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="45"
+                strokeDashoffset="0"
+              ></line>
+              <line
+                className={`line top`}
+                x1="10"
+                x2="90"
+                y1="80"
+                y2="80"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="80"
+                strokeDashoffset="0"
+              ></line>
+            </svg>
+          </motion.button>
+          <Button className="hidden invisible sm:visible sm:flex absolute right-0 position-center z-[999999999999999999]">
             Pozovi
           </Button>
         </div>

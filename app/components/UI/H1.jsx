@@ -9,7 +9,7 @@ const H1 = ({ children }) => {
     <h1
       className={`${akiraFont?.className} uppercase text-center whitespace-nowrap leading-none`}
       style={{
-        fontSize: containerWidth ? `${containerWidth / 11.6}px` : '235px',
+        fontSize: containerWidth ? `${containerWidth / 10.0}px` : '235px',
       }}
     >
       {children}
