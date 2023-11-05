@@ -58,7 +58,7 @@ const Footer = () => {
             />
           </div>
           <nav className="flex items-center">
-            <ul className="flex flex-row gap-5">
+            <ul className="flex flex-row gap-2 sm:gap-5">
               {navItemsSr?.map(navItem => (
                 <li key={navItem.title} className="uppercase text-white">
                   <Link

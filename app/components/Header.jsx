@@ -71,48 +71,50 @@ const Nav = ({ gabarito, akira }) => {
             onClick={() => {
               setIsOpen(!isOpen)
             }}
-            className={'button-two absolute right-0 w-14 h-14'}
+            className={
+              'sm:hidden sm:invisible visible flex button-two absolute right-0 top-[50%] translate-y-[-50%] w-10 h-10 justify-center items-center'
+            }
             aria-expanded="false"
             aria-label="hamburger"
           >
             <svg
-              stroke={'red'}
-              viewBox="0 0 100 100"
+              stroke={'#000000'}
+              viewBox="0 0 70 70"
               xmlns="http://www.w3.org/2000/svg"
-              width="250"
+              // width="250"
               className="w-full"
             >
               <line
                 className={`line top`}
-                x1="10"
-                x2="90"
-                y1="40"
-                y2="40"
-                strokeWidth="4"
+                x1="0"
+                x2="100"
+                y1="20"
+                y2="20"
+                strokeWidth="5"
                 strokeLinecap="round"
-                strokeDasharray="80"
+                strokeDasharray="100"
+                strokeDashoffset="0"
+              ></line>
+              <line
+                className={`line middle`}
+                x1="100"
+                x2="0"
+                y1="35"
+                y2="35"
+                strokeWidth="5"
+                strokeLinecap="round"
+                strokeDasharray="85"
                 strokeDashoffset="0"
               ></line>
               <line
                 className={`line bottom`}
-                x1="90"
-                x2="10"
-                y1="60"
-                y2="60"
-                strokeWidth="4"
+                x1="0"
+                x2="100"
+                y1="50"
+                y2="50"
+                strokeWidth="5"
                 strokeLinecap="round"
-                strokeDasharray="45"
-                strokeDashoffset="0"
-              ></line>
-              <line
-                className={`line top`}
-                x1="10"
-                x2="90"
-                y1="80"
-                y2="80"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeDasharray="80"
+                strokeDasharray="100"
                 strokeDashoffset="0"
               ></line>
             </svg>
