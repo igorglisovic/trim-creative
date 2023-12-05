@@ -63,57 +63,58 @@ const PageTransitionBackground = () => {
     setVariants(variantsObj)
   }, [])
 
-  return (
-    <div className="absolute top-0 z-10 pt-[95px] w-full">
-      <motion.div
-        variants={variants}
-        initial={'hidden'}
-        animate={'enter'}
-        exit={'hidden'}
-        transition={{
-          duration: 5,
-          // type: 'spring',
-          // stiffness: 100,
-          // damping: 200,
-        }}
-        onAnimationStart={() => {
-          updateAnimationStarted(true)
-          updateAnimationFinished(false)
-        }}
-        onAnimationComplete={() => {
-          updateAnimationFinished(true)
-          updateAnimationStarted(false)
-          updateBackgroundColor(false)
-        }}
-        className={`${animationFinished ? '' : 'test'}`}
-      >
-        {currentPath === '/' && <HomePage />}
-        {/* <HomePage /> */}
-        {currentPath === '/test' && <TestPage />}
-      </motion.div>
-      <motion.div
-        variants={variants2}
-        initial={'hidden'}
-        animate={'enter'}
-        transition={{
-          duration: 3,
-          type: 'spring',
-          stiffness: 100,
-          damping: 50,
-        }}
-        className="absolute top-0 z-10 pt-[95px] w-full"
-      >
-        {animationPosition &&
-          !animationFinished &&
-          pathHistory &&
-          pathHistory[0] === '/' && <HomePage fadeIn={false} />}
-        {animationPosition &&
-          !animationFinished &&
-          pathHistory &&
-          pathHistory[0] === '/test' && <TestPage fadeIn={false} />}
-      </motion.div>
-    </div>
-  )
+  return null
+  // return (
+  //   <div className="absolute top-0 z-10 pt-[95px] w-full">
+  //     <motion.div
+  //       variants={variants}
+  //       initial={'hidden'}
+  //       animate={'enter'}
+  //       exit={'hidden'}
+  //       transition={{
+  //         duration: 5,
+  //         // type: 'spring',
+  //         // stiffness: 100,
+  //         // damping: 200,
+  //       }}
+  //       onAnimationStart={() => {
+  //         updateAnimationStarted(true)
+  //         updateAnimationFinished(false)
+  //       }}
+  //       onAnimationComplete={() => {
+  //         updateAnimationFinished(true)
+  //         updateAnimationStarted(false)
+  //         updateBackgroundColor(false)
+  //       }}
+  //       className={`${animationFinished ? '' : 'test'}`}
+  //     >
+  //       {currentPath === '/' && <HomePage />}
+  //       {/* <HomePage /> */}
+  //       {currentPath === '/test' && <TestPage />}
+  //     </motion.div>
+  //     <motion.div
+  //       variants={variants2}
+  //       initial={'hidden'}
+  //       animate={'enter'}
+  //       transition={{
+  //         duration: 3,
+  //         type: 'spring',
+  //         stiffness: 100,
+  //         damping: 50,
+  //       }}
+  //       className="absolute top-0 z-10 pt-[95px] w-full"
+  //     >
+  //       {animationPosition &&
+  //         !animationFinished &&
+  //         pathHistory &&
+  //         pathHistory[0] === '/' && <HomePage fadeIn={false} />}
+  //       {animationPosition &&
+  //         !animationFinished &&
+  //         pathHistory &&
+  //         pathHistory[0] === '/test' && <TestPage fadeIn={false} />}
+  //     </motion.div>
+  //   </div>
+  // )
 }
 
 export default PageTransitionBackground

@@ -27,10 +27,10 @@ const Nav = ({ gabarito, akira }) => {
   }, [gabarito, akira])
 
   const handleClick = (e, navItem) => {
-    // if (!animationFinished) {
-    //   e.preventDefault()
-    //   return
-    // }
+    if (!animationFinished) {
+      // e.preventDefault()
+      // return
+    }
 
     updateAnimationPosition({ x: e.clientX, y: e.clientY })
     updateBackgroundColor(true)

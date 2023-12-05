@@ -11,14 +11,11 @@ const Template = ({ children }) => {
     animationPosition,
     updateAnimationFinished,
     animationFinished,
-    animationStarted,
     updateAnimationStarted,
     updateBackgroundColor,
   } = useAnimationContext()
 
   const [variants, setVariants] = useState()
-
-  const { pathHistory } = useRouterContext()
 
   // Smooth scroll
   useEffect(() => {
@@ -96,35 +93,35 @@ const Template = ({ children }) => {
       }
     }
     setVariants(variantsObj)
-  }, [])
+  }, [animationPosition])
 
   return (
     <>
-      {variants && (
-        <motion.div
-          // variants={variants}
-          initial={'hidden'}
-          animate={'enter'}
-          transition={{
-            // duration: 12,
-            type: 'spring',
-            stiffness: 120,
-            damping: 180,
-          }}
-          onAnimationStart={() => {
-            updateAnimationStarted(true)
-            updateAnimationFinished(false)
-          }}
-          onAnimationComplete={() => {
-            updateAnimationFinished(true)
-            updateAnimationStarted(false)
-            updateBackgroundColor(false)
-          }}
-          className={`${animationFinished ? '' : 'test'}`}
-        >
-          {children}
-        </motion.div>
-      )}
+      {/* {variants && ( */}
+      <motion.div
+        variants={variants}
+        initial={'hidden'}
+        animate={'enter'}
+        transition={{
+          duration: 32,
+          // type: 'spring',
+          // stiffness: 120,
+          // damping: 180,
+        }}
+        onAnimationStart={() => {
+          updateAnimationStarted(true)
+          updateAnimationFinished(false)
+        }}
+        onAnimationComplete={() => {
+          updateAnimationFinished(true)
+          updateAnimationStarted(false)
+          updateBackgroundColor(false)
+        }}
+        className={`${animationFinished ? '' : 'test'}`}
+      >
+        {children}
+      </motion.div>
+      {/* )} */}
       {/* <motion.div
         variants={variants2}
         initial={'hidden'}
