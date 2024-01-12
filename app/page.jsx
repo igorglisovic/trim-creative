@@ -1,26 +1,12 @@
 'use client'
 
-import { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import { useRouterContext } from './store/router-ctx'
 import HeroSection from './components/HomeSections/HeroSection'
-import CardsSection from './components/HomeSections/CardsSection'
-import PortfolioSection from './components/HomeSections/PortfolioSection'
 
 const page = () => {
-  const { updateCurrentPath } = useRouterContext()
-  const pathname = usePathname()
-
-  useEffect(() => {
-    updateCurrentPath(pathname)
-  }, [])
-
   return (
-    <>
+    <div className="w-[100vw] h-[100vh] overflow-hidden">
       <HeroSection />
-      <CardsSection />
-      <PortfolioSection />
-    </>
+    </div>
   )
 }
 

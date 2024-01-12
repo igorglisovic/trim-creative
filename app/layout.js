@@ -1,12 +1,10 @@
 import { Gabarito } from 'next/font/google'
 import './globals.css'
-import Header from './components/Header'
 import { ContainerContextProvider } from './store/container-ctx'
 import localFont from 'next/font/local'
 import { FontsContextProvider } from './store/fonts-ctx'
 import { AnimationContextProvider } from './store/animation-ctx'
 import { RouterContextProvider } from './store/router-ctx'
-import Footer from './components/Footer'
 
 const gabarito = Gabarito({
   subsets: ['latin'],
@@ -30,14 +28,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`overflow-x-hidden `}>
+      <body className={`overflow-x-hidden ${akira.className}`}>
         <ContainerContextProvider>
           <FontsContextProvider>
             <AnimationContextProvider>
               <RouterContextProvider>
-                <Header gabarito={gabarito} akira={akira} />
                 <main>{children}</main>
-                <Footer />
               </RouterContextProvider>
             </AnimationContextProvider>
           </FontsContextProvider>
